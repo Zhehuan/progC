@@ -1,9 +1,5 @@
-/* Tailles des différentes 
- * représentations entières */
-
-
 /*
-//ex1: comprendre un morceau de code (pas besoin de vérifier comme il s'agit d'une initiation de la compréhension des sizeof(machin))
+// Tailles des différentes représentations entières
 
 #include <limits.h>
 #include <stdio.h>
@@ -53,17 +49,66 @@ int main () {
 }
 */
 
-//ex2
+
+
+
+
+/*
+//Afficher des entiers
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(){
   int entiers[10] = { 0, -0, -1, 11, 96, 4567, -255, 582, 2147483700, 4294967416 };
   int a = 0;
-  do{
+  while(a<10){
     printf("%d\n", entiers[a]);
-    a += 1;
-  } while(a<10);
+    a++;
+  }
   return EXIT_SUCCESS;
 }
+*/
 
+
+
+
+
+
+//Conversion d'un entier non-signé en binaire
+#include <stdio.h>
+#include <stdlib.h>
+
+void printbin(unsigned int n){
+  int tab [32],i = 0;  
+  while(n != 0){
+    if(n%2 == 0){
+      tab[i] = 0;
+      n = n/2;
+      i++;
+    }else{
+      tab[i] = 1;
+      n = (n-1)/2;
+      i++;
+    }
+  }
+  for(int i = 0; i<16;i++){
+    int temp = 0;
+    temp = tab[i];
+    tab[i] = tab[32-i];
+    tab[32-i] = temp;
+  }
+    
+  for(int i = 0; i<32;i++){
+  printf("%d",tab[i]);
+  }
+  printf("\n");
+}
+
+int main(){
+  int val;
+  printf("Une valeur: ");
+  scanf("%d",&val);
+  printbin(val);
+
+  return EXIT_SUCCESS;
+}
