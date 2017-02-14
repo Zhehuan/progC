@@ -72,36 +72,19 @@ int main(){
 
 
 
-
+/*
 
 //Conversion d'un entier non-signé en binaire
 #include <stdio.h>
 #include <stdlib.h>
 
 void printbin(unsigned int n){
-  int tab [32],i = 0;  
-  while(n != 0){
-    if(n%2 == 0){
-      tab[i] = 0;
-      n = n/2;
-      i++;
-    }else{
-      tab[i] = 1;
-      n = (n-1)/2;
-      i++;
-    }
+  if(n<=1){
+  printf("%d",n%2);
+  }else{
+  printbin(n/2);
+  printf("%d",n%2);
   }
-  for(int i = 0; i<16;i++){
-    int temp = 0;
-    temp = tab[i];
-    tab[i] = tab[32-i];
-    tab[32-i] = temp;
-  }
-    
-  for(int i = 0; i<32;i++){
-  printf("%d",tab[i]);
-  }
-  printf("\n");
 }
 
 int main(){
@@ -109,6 +92,33 @@ int main(){
   printf("Une valeur: ");
   scanf("%d",&val);
   printbin(val);
+  printf("\n");
+  return EXIT_SUCCESS;
+}
 
+*/
+
+
+
+//Décalage et masques
+#include <stdio.h>
+#include <stdlib.h>
+
+//pas réussi à garder la chaine de nombre binaire
+void printbin(unsigned int n){
+  if(n<=1){
+  printf("%d",n%2);
+  }else{
+  printbin(n/2);
+  printf("%d",n%2);
+  }
+}
+
+int main(){
+  int val;
+  printf("Une valeur: ");
+  scanf("%d",&val);
+  printbin(val);
+  printf("\n");
   return EXIT_SUCCESS;
 }
